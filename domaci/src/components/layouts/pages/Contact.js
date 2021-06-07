@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import emailjs from 'emailjs-com';
 
 class Contact extends Component{
     render(){
+        function sendEmail(e) {
+            e.preventDefault();
+            emailjs.sendForm('service_nxxlwr9', 'template_hcq3gso', e.target, 'user_iuXdSYuX1fvMVzyCc5caM')
+              .then((result) => {
+                  console.log(result.text);
+              }, (error) => {
+                  console.log(error.text);
+              });
+              e.target.reset();
+        }
         return(
             <section className="my-5 py-5">
                 <div className="container">
@@ -22,21 +33,21 @@ class Contact extends Component{
                     </div>
                     <div className="col-md-5">
                         <h4><strong>Kontaktirajte nas</strong></h4>
-                        <form>
+                        <form onSubmit={sendEmail}>
                             <div className="form-group">
-                                <input type="text" className="form-control" placeholder="Ime"/>
+                                <input type="text" className="form-control" placeholder="Ime" name="name"/>
                             </div><br></br>
                             <div className="form-group">
-                                <input type="email" className="form-control" placeholder="Email"/>
+                                <input type="email" className="form-control" placeholder="Email" name="email"/>
                             </div><br></br>
                             <div className="form-group">
-                                <input type="tel" className="form-control" placeholder="Telefon"/>
+                                <input type="text" className="form-control" placeholder="Tema" name="subject"/>
                             </div><br></br>
-                            <textarea className="form-control" cols="30" rows="3" placeholder="Ostavite poruku"/>
+                            <textarea className="form-control" cols="30" rows="3" placeholder="Ostavite poruku" name="message"/>
                             <br></br>
-                            <Link className="btn btn-outline-primary text-uppercase">
-                                Pošaljite
-                            </Link>
+                            <input type="submit" className="btn btn-outline-primary text-uppercase" value="Pošaljite">
+                               
+                            </input>
                         </form>
                     </div>
                     </div>

@@ -8,7 +8,7 @@ ReactDOM.render(
     <InfoProvider>
         <Router>
         <App />
-    </Router>
+        </Router>
     </InfoProvider>
    , document.getElementById('root')
     );
