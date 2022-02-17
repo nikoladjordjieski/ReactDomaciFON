@@ -6,7 +6,7 @@ class Contact extends Component{
     render(){
         function sendEmail(e) {
             e.preventDefault();
-            emailjs.sendForm('service_nxxlwr9', 'template_hcq3gso', e.target, 'user_iuXdSYuX1fvMVzyCc5caM')
+            emailjs.sendForm('anon', 'anon', e.target, 'anon')
               .then((result) => {
                   console.log(result.text);
               }, (error) => {
